@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyManagementApp.Views.CreateAccountPage"
+             xmlns:vm="clr-namespace:KeyManagementApp.ViewModels"
+             x:DataType="vm:CreateAccountViewModel">
+
+    <ContentPage.BindingContext>
+        <vm:CreateAccountViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Padding="10,0,10,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="UserName:" FontSize="Medium" Margin="0,10" Grid.Column="0" Grid.Row="0"/>
+                <Label Text="First Name:" FontSize="Medium" Margin="0,10" Grid.Column="0" Grid.Row="1"/>
+                <Label Text="Last Name:" FontSize="Medium" Margin="0,10" Grid.Column="0" Grid.Row="2"/>
+                <Label Text="Password:" FontSize="Medium" Margin="0,10" Grid.Column="0" Grid.Row="3"/>
+                <Label Text="Reenter" FontSize="Medium" Margin="0" Grid.Column="0" Grid.Row="4"/>
+                <Label Text="Password:" FontSize="Medium" Margin="0,-35" Grid.Column="0" Grid.Row="5"/>
+                
+                <Entry x:Name="UN" Grid.Column="1" Grid.Row="0" Text="{Binding UserName}"/>
+                <Entry x:Name="fN" Grid.Column="1" Grid.Row="1" Text="{Binding FirstName}"/>
+                <Entry x:Name="lN" Grid.Column="1" Grid.Row="2" Text="{Binding LastName}"/>
+                <Entry x:Name="password" IsPassword="True"  Grid.Column="1" Grid.Row="3" Text="{Binding Password}"/>
+                <Entry x:Name="confirmPass" IsPassword="True" Grid.Column="1" Grid.Row="4" Text="{Binding ConfirmPassword}"/>
+            </Grid>
+            <Button Text="Create Account" CornerRadius="15" Command="{Binding CreateAccountCommand}"/>
+            <Button Text="Cancel" CornerRadius="15" x:Name="btnCancel" Clicked="btnCancel_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

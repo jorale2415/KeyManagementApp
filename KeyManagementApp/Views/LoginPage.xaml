@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:KeyManagementApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="KeyManagementApp.Views.LoginPage"
+             Title="Key Management"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             x:DataType="viewmodels:LoginViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="UserName" FontSize="Large" Padding="0,10" Grid.Column="0" Grid.Row="0"/>
+                <Entry Text="{Binding Username}" Grid.Column="1" Grid.Row="0"/>
+                <Label Text="Password" FontSize="Large" Padding="0,10" Grid.Column="0" Grid.Row="1"/>
+                <Entry Text="{Binding Password}" IsPassword="True" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+            <Button VerticalOptions="Center" BackgroundColor="#AD1f22" CornerRadius="15" FontSize="Large" Text="Login" Command="{Binding LoginNavCommand}"/>
+            <Button Text="Create Account" BackgroundColor="#AD1f22" CornerRadius="15" Command="{Binding CreateAccountNavCommand}"/>
+            <Button Text="Forgot Password" BackgroundColor="#AD1f22" CornerRadius="15" Command="{Binding ForgotPasswordNavCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyManagementApp.Views.AdminPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#Ad1f22</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Accent}">
+            <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Image Source="https://thepropertycenter.com/wp-content/uploads/2020/09/The-Property-Center-Logo-W.png" VerticalOptions="Center" HeightRequest="64" />
+                    </ContentView>
+                </StackLayout>
+                <StackLayout>
+                    <Button Margin="50,0" Text="Add Owner" CornerRadius="25" Command="{Binding AddOwnerCommand}"/>
+                    <Button Margin="50,0" Text="Remove Owner" CornerRadius="25" Command="{Binding RemoveOwnerCommand}"/>
+                    <Button Margin="50,0" Text="Add Property" CornerRadius="25" Command="{Binding AddPropertyCommand}"/>
+                    <Button Margin="50,0" Text="Remove Property" CornerRadius="25" Command="{Binding RemovePropertyCommand}"/>
+                    <Button Margin="50,0" Text="Add Key Box" CornerRadius="25" Command="{Binding AddKeyBoxCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
