@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KeyManagementApp.Views.AddPropertyPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:KeyManagementApp.ViewModels"
+             x:Class="KeyManagementApp.Views.AddPropertyPage"
+             x:DataType="viewmodels:AddPropertyViewModel">
 
+    <ContentPage.BindingContext>
+        <viewmodels:AddPropertyViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#Ad1f22</Color>
@@ -18,10 +23,11 @@
                     </ContentView>
                 </StackLayout>
                 <StackLayout Margin="20,0">
-                    <Entry Placeholder="Address" x:Name="txtAddress"/>
-                    <Entry Placeholder="City" x:Name="txtCity"/>
-                    <Entry Placeholder="State" x:Name="txtState"/>
-                    <Entry Placeholder="Zip" x:Name="txtZip"/>
+                    <Picker Title="OwnerPicker" />
+                    <Entry Placeholder="Address" Text="{Binding Address}"/>
+                    <Entry Placeholder="City" Text="{Binding City}"/>
+                    <Entry Placeholder="State" Text="{Binding State}"/>
+                    <Entry Placeholder="Zip" Text="{Binding Zip}"/>
                     <Button Text="Remove" FontSize="Medium" Margin="50,10" CornerRadius="25" Command="{Binding AddProperty}"/>
                 </StackLayout>
             </StackLayout>
