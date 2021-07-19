@@ -32,9 +32,7 @@ namespace KeyManagementApp.ViewModels
 
         // folder path to database, if database does not exist create one
         public void Init()
-        {
-            
-
+        {  
             // check to see if DB exists - if not create one
             if (!File.Exists(_dbPath))
             {

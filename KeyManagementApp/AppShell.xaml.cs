@@ -16,8 +16,6 @@ namespace KeyManagementApp
             Routing.RegisterRoute(nameof(AdminPage), typeof(AdminPage));
             Routing.RegisterRoute(nameof(AddOwnerPage), typeof(AddOwnerPage));
             Routing.RegisterRoute(nameof(AddPropertyPage), typeof(AddPropertyPage));
-            Routing.RegisterRoute(nameof(RemoveOwnerPage), typeof(RemoveOwnerPage));
-            Routing.RegisterRoute(nameof(RemovePropertyPage), typeof(RemovePropertyPage));
             Routing.RegisterRoute(nameof(AddKeyBoxPage), typeof(AddKeyBoxPage));
         }
 

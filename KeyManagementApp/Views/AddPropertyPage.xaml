@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:KeyManagementApp.ViewModels"
              x:Class="KeyManagementApp.Views.AddPropertyPage"
-             x:DataType="viewmodels:AddPropertyViewModel">
+             x:DataType="viewmodels:AddPropertyViewModel"
+            
+             Title="Add/Remove Property">
 
     <ContentPage.BindingContext>
         <viewmodels:AddPropertyViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#Ad1f22</Color>
@@ -18,17 +20,25 @@
         <StackLayout BackgroundColor="{StaticResource Accent}">
             <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                        <Image Source="https://thepropertycenter.com/wp-content/uploads/2020/09/The-Property-Center-Logo-W.png" VerticalOptions="Center" HeightRequest="64" />
+                    <ContentView Padding="0,30,0,10" VerticalOptions="FillAndExpand">
+                        <Image Source="https://thepropertycenter.com/wp-content/uploads/2020/09/The-Property-Center-Logo-W.png" 
+                               VerticalOptions="Center" HeightRequest="104" />
                     </ContentView>
                 </StackLayout>
-                <StackLayout Margin="20,0">
-                    <Picker Title="OwnerPicker" />
+                <StackLayout Margin="10,0">
+                    <Picker Title="OwnerPicker">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>test</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
                     <Entry Placeholder="Address" Text="{Binding Address}"/>
                     <Entry Placeholder="City" Text="{Binding City}"/>
                     <Entry Placeholder="State" Text="{Binding State}"/>
                     <Entry Placeholder="Zip" Text="{Binding Zip}"/>
-                    <Button Text="Remove" FontSize="Medium" Margin="50,10" CornerRadius="25" Command="{Binding AddProperty}"/>
+                    <Button Text="Add" FontSize="Medium" Margin="50,5" CornerRadius="25" Command="{Binding AddProperty}"/>
+                    <Button Text="Remove" FontSize="Medium" Margin="50,0" CornerRadius="25" Command="{Binding RemoveProperty}"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

@@ -1,5 +1,6 @@
 ﻿using KeyManagementApp.Models;
 using KeyManagementApp.Views;
+using MvvmHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +12,15 @@ namespace KeyManagementApp.ViewModels
     class AddPropertyViewModel : BindableObject
     {
         public ICommand AddProperty { get; }
+        public ICommand RemoveProperty { get; }
+        public ICommand GetOwners { get; }
+        public ObservableRangeCollection<Owner> OwnerList { get; set; }
 
         public AddPropertyViewModel()
         {
             AddProperty = new Command(OnAddProperty);
+            RemoveProperty = new Command(OnRemoveProperty);
+            GetOwners = new Command(OnGetOwners);
         }
 
         public string address = "";
@@ -78,6 +84,16 @@ namespace KeyManagementApp.ViewModels
             // add variables to property
             // open connection to db
             // pass object to db
+        }
+
+        public void OnRemoveProperty()
+        {
+
+        }
+        public void OnGetOwners()
+        {
+            DALOwner dal = new DALOwner();
+            OwnerList = (ObservableRangeCollection<Owner>)dal.GetOwners();
         }
     }
 }

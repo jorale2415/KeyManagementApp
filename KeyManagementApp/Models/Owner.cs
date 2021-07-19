@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace KeyManagementApp.Models
 {
@@ -8,5 +9,6 @@ namespace KeyManagementApp.Models
     {
         public string FName { get; set; }
         public string LName { get; set; }
+
     }
 }

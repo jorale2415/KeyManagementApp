@@ -101,7 +101,7 @@ namespace KeyManagementApp.Models
     public partial class Owner
     {
         [PrimaryKey, AutoIncrement]
-        public Int64 OwnId { get; set; }
+        public long OwnId { get; set; }
         
         /*[NotNull]
         public String FName { get; set; }

@@ -11,5 +11,9 @@ namespace KeyManagementApp.Models
         {
 
         }
+        public void RemoveProperty(Properties propertyToRemove)
+        {
+
+        }
     }
 }
