@@ -10,5 +10,9 @@ namespace KeyManagementApp.Models
         public string FName { get; set; }
         public string LName { get; set; }
 
+        public string FullName
+        {
+            get => FName + " " + LName;
+        }
     }
 }

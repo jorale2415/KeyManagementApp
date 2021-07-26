@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using SQLite;
+using System.Linq;
 
 namespace KeyManagementApp.Models 
 {
@@ -40,9 +41,32 @@ namespace KeyManagementApp.Models
             } 
         }
 
-        public void RemoveKeyBox(int id)
+        public bool RemoveKeyBox(string name)
         {
             Init();
+            using(SQLiteConnection db = new SQLiteConnection(_dbPath))
+            {
+                foreach(KeyBox k in db.Table<KeyBox>())
+                {
+                    if (k.KeyBoxName == name)
+                    {
+                        db.Delete(k);
+                        exists = true;
+                        break;
+                    }         
+                }
+                return exists;
+            }
+        }
+
+        public IEnumerable<KeyBox> GetKeyBoxes()
+        {
+            Init();
+            using(SQLiteConnection db = new SQLiteConnection(_dbPath))
+            {
+                var keyBoxes = db.Table<KeyBox>().ToList();
+                return keyBoxes;
+            }
         }
     }
 }

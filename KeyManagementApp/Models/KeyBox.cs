@@ -9,5 +9,7 @@ namespace KeyManagementApp.Models
         public string KeyBoxName { get; set; }
         public string KeyBoxLocation { get; set; }
         public int KeyBoxSize { get; set; }
+
+        public string BoxName { get => KeyBoxName; }
     }
 }

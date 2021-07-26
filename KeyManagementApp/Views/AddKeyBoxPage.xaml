@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:KeyManagementApp.ViewModels"
+             xmlns:model="clr-namespace:KeyManagementApp.Models"
              x:Class="KeyManagementApp.Views.AddKeyBoxPage"
              Title="Key Box">
     <ContentPage.BindingContext>
@@ -17,7 +18,7 @@
         <StackLayout BackgroundColor="{StaticResource Accent}">
             <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <ContentView Padding="0,40,0,20" VerticalOptions="FillAndExpand">
                         <Image Source="https://thepropertycenter.com/wp-content/uploads/2020/09/The-Property-Center-Logo-W.png" VerticalOptions="Center" HeightRequest="64" />
                     </ContentView>
                 </StackLayout>
@@ -26,6 +27,60 @@
                     <Entry Placeholder="Location" Text="{Binding Location}"/>
                     <Entry Placeholder="Number of Slots" Text="{Binding Slots}"/>
                     <Button Text="Add Key Box" FontSize="Medium" Margin="50,10" CornerRadius="25" Command="{Binding AddKeyBox}"/>
+                    <Button Text="Remove Key Box" FontSize="Medium" Margin="50,0" CornerRadius="25" Command="{Binding RemoveKeyBox}"/>
+                    <ListView ItemsSource="{Binding KeyBoxList}"
+                              BackgroundColor="Transparent">
+                        <ListView.Header>
+                            <Frame BorderColor="Black" IsVisible="true">
+                                <StackLayout HeightRequest="25">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="210" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="Name" Grid.Column="0" FontSize="Large" FontAttributes="Bold,Italic" Padding="-15,0"/>
+                                        <Label Text="Location" Grid.Column="1" FontSize="Large" FontAttributes="Bold,Italic" Padding="-15,0"/>
+                                        <Label Text="Slots" Grid.Column="2" FontSize="Large" FontAttributes="Bold,Italic" Padding="-15,0"/>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="model:KeyBox">
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80" />
+                                            <ColumnDefinition Width="215" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding KeyBoxName}" 
+                                               FontSize="Large" 
+                                               FontAttributes="Bold"
+                                               Margin="10,10,0,0" 
+                                               TextColor="Black"/>
+                                        <Label Text="{Binding KeyBoxLocation}"
+                                               Grid.Column="1"
+                                               FontSize="Medium" 
+                                               FontAttributes="Bold"
+                                               Margin="8,15,0,0"/>
+                                        <Label Text="{Binding KeyBoxSize}" 
+                                               Grid.Column="2" 
+                                               FontSize="Medium" 
+                                               FontAttributes="Bold"
+                                               Margin="8,15,0,0"/>
+                                        </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

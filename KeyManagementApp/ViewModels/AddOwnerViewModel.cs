@@ -83,7 +83,6 @@ namespace KeyManagementApp.ViewModels
                 }
             }
         }
-
         public void OnDeleteOwner()
         {
             // validate fields are not null or empty
@@ -112,6 +111,8 @@ namespace KeyManagementApp.ViewModels
             }
             Refresh();
         }
+
+        // Refresh listView
         public void Refresh()
         {
             DALOwner dal = new DALOwner();

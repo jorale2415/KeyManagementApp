@@ -35,35 +35,13 @@ namespace KeyManagementApp.Models
     public partial class Employee
     {
         [PrimaryKey, AutoIncrement]
-        public Int64 EmpId { get; set; }
-        
-       /* [NotNull]
-        public String UserName { get; set; }
-        
-        [NotNull]
-        public String FName { get; set; }
-        
-        [NotNull]
-        public String LName { get; set; }
-        
-        [NotNull]
-        public String IsPass { get; set; }
-        */
+        public Int64 EmpId { get; set; }        
     }
     
     public partial class KeyBox
     {
         [PrimaryKey, AutoIncrement]
-        public Int64 KeyBoxId { get; set; }
-        
-        /*[NotNull]
-        public String KeyBoxName { get; set; }
-        
-        [NotNull]
-        public String KeyBoxLocation { get; set; }
-        
-        [NotNull]
-        public Int64 KeyBoxSize { get; set; }*/     
+        public Int64 KeyBoxId { get; set; }           
     }
     public partial class Slots
     {
@@ -72,12 +50,6 @@ namespace KeyManagementApp.Models
 
         [NotNull, Indexed]
         public Int64 KeyBoxId { get; set; }
-
-        /* [NotNull]
-         public Int64 SlotNum { get; set; }
-
-         public Int64? Isfull { get; set; }*/
-
     }
 
     public partial class LogSheet
@@ -89,50 +61,18 @@ namespace KeyManagementApp.Models
         public Int64 Emp { get; set; }
         
         [NotNull]
-        public Int64 Property { get; set; }
-        
-        /*[NotNull]
-        public String DateOut { get; set; }
-        
-        public String DateIn { get; set; }*/
-        
+        public Int64 Property { get; set; }       
     }
     
     public partial class Owner
     {
         [PrimaryKey, AutoIncrement]
-        public long OwnId { get; set; }
-        
-        /*[NotNull]
-        public String FName { get; set; }
-        
-        [NotNull]
-        public String LName { get; set; }*/
-        
+        public long OwnId { get; set; }    
     }
     
     public partial class Properties
     {
         [PrimaryKey, AutoIncrement]
-        public Int64 PropId { get; set; }
-        
-        [NotNull, Indexed]
-        public Int64 Owner { get; set; }
-        
-        [NotNull, Indexed]
-        public Int64 KeyNum { get; set; }
-        
-        /*[NotNull]
-        public String PropAdd { get; set; }
-        
-        [NotNull]
-        public String PropCity { get; set; }
-        
-        [NotNull]
-        public String PropState { get; set; }
-        
-        [NotNull]
-        public String PropZip { get; set; }*/
-        
+        public Int64 PropId { get; set; }        
     }  
 }

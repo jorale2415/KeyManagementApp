@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KeyManagementApp.ViewModels;
@@ -11,11 +12,10 @@ namespace KeyManagementApp.Models
 {
     public class DALOwner : BaseViewModel
     {
-   
         Boolean exists;
-
         public DALOwner()
-        {      
+        {
+            
         }
 
         public bool AddOwner(Owner ownerToAdd)
@@ -54,7 +54,6 @@ namespace KeyManagementApp.Models
             }
         }
 
-
         public bool RemoveOwner(Owner ownerToDelete)
         {
             Init();
@@ -68,8 +67,7 @@ namespace KeyManagementApp.Models
                     if (o.FName == ownerToDelete.FName
                         && o.LName == ownerToDelete.LName)
                     {
-                        ownerToDelete.OwnId = o.OwnId;
-                        // TODO update database primary keys
+                        ownerToDelete.OwnId = o.OwnId;                     
                         exists = true;
                         //return exists;
                     }

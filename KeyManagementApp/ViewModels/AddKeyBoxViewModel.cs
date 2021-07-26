@@ -4,16 +4,24 @@ using System.Text;
 using Xamarin.Forms;
 using KeyManagementApp.Views;
 using KeyManagementApp.Models;
+using MvvmHelpers;
 
 namespace KeyManagementApp.ViewModels
 {
     class AddKeyBoxViewModel : BindableObject
     {
         public Command AddKeyBox { get; }
+        public Command RemoveKeyBox { get; }
+        public ObservableRangeCollection<KeyBox> KeyBoxList {get; set;}
 
         public AddKeyBoxViewModel()
         {
-            AddKeyBox = new Command(OnAddKeyBox);        
+            AddKeyBox = new Command(OnAddKeyBox);
+            RemoveKeyBox = new Command(OnRemoveKeyBox);
+            KeyBoxList = new ObservableRangeCollection<KeyBox>();
+
+            // refresh observable range collection
+            Refresh();
         }
         public string name = "";
         public string location = "";
@@ -83,6 +91,7 @@ namespace KeyManagementApp.ViewModels
                 // pass object to database
                 dAL.AddKeyBox(newKeyBox);
                 ClearFields();
+                Refresh();
             }
             else
             {
@@ -90,6 +99,38 @@ namespace KeyManagementApp.ViewModels
                 Application.Current.MainPage.DisplayAlert("Message", "All fields must be filled out.", "Ok");
                 ClearFields();
             }
+        }
+
+        private void OnRemoveKeyBox()
+        {
+            if (!string.IsNullOrEmpty(Name))
+            {
+                
+                DALKeyBox dAL = new DALKeyBox();
+                bool exists = dAL.RemoveKeyBox(Name);
+
+                if (exists)
+                {
+                    Application.Current.MainPage.DisplayAlert("Message", "Key box was removed successfully", "Ok");
+                    Refresh();
+                    ClearFields();
+                }
+                else
+                {
+                    Application.Current.MainPage.DisplayAlert("Message", "Key box doesn't exists", "Ok");                 
+                }
+
+            }
+        }
+
+        public void Refresh()
+        {
+            DALKeyBox dal = new DALKeyBox();
+            var keyBoxList = dal.GetKeyBoxes();
+            KeyBoxList.AddRange(keyBoxList);
+
+            KeyBoxList.Clear();
+            KeyBoxList.AddRange(keyBoxList);
         }
     }
 }
